@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CGVBooking.Models.ShowtimeList>
+@{
+    ViewBag.Title = "ShowTimesList";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@{ var showtimes = Model; }
+
+    <main class="showtime-contain">
+        <div class="showtime-list">
+            <table class="showtime-list-table">
+                <thead>
+                    <tr>
+                        <th>Ngày tháng</th>
+                        <th>Xuất chiếu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var s in showtimes)
+                    {
+                        <tr>
+                            <td class="showtime-content">@String.Format("{0:MM/dd/yyyy}", s.ShowtimeDate)</td>
+                            <td class="showtime-content">@Html.ActionLink(s.TimeSlot, "chairStatus", "Booking", new { filmID = s.FilmId, timeslotID = s.TimeSlotID }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+                
+            </table>
+        </div>
+    </main>

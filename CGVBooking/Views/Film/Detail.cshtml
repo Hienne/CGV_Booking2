@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@{ 
+    var film = Model as CGVBooking.Models.Film;
+    string srcTrailer = film.Trailer;
+    string srcPoster = "~/Content/img/poster/" + film.Poster;
+    string time;
+    if (film.Time == 0)
+    {
+        time = "Chưa cập nhật";
+    }
+    else
+    {
+        time = film.Time.ToString() + "phút";
+    }
+
+    string rated;
+    if (film.Rated == "")
+    {
+        rated = "Chưa cập nhật";
+    }
+    else
+    {
+        rated = film.Rated;
+    }
+
+}
+
+    <div class="detail-movie-contain">
+        <div class="movie-trailer">
+            <iframe width="600" height="400" src= @Url.Content(srcTrailer) frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="main-detail">
+            <div class="poster-detail">
+                <img src=@Url.Content(srcPoster)>
+            </div>
+
+            <div class="content-detail">
+                <div class="movie-name">
+                    <h2>@film.Name</h2>
+                </div>
+                <div class="movie-director movie-info">
+                    <label>Đạo diễn:</label>
+                    <div class="content-movie-detail">&nbsp; @film.Director</div>
+                </div>
+                <div class="movie-actor movie-info">
+                    <label>Diễn viên:</label>
+                    <div class="content-movie-detail">&nbsp; @film.Actor</div>
+                </div>
+                <div class="movie-type movie-info">
+                    <label>Thể loại:</label>
+                    <div class="content-movie-detail">&nbsp; @film.Type</div>
+                </div>
+                <div class="movie-premieredate movie-info">
+                    <label>Khởi chiếu:</label>
+                    <div class="content-movie-detail">&nbsp; @film.PremiereDate.ToShortDateString()</div>
+                </div>
+                <div class="movie-time movie-info">
+                    <label>Thời lượng:</label>
+                    <div class="content-movie-detail">&nbsp; @time</div>
+                </div>
+                <div class="movie-language movie-info">
+                    <label>Ngôn ngữ:</label>
+                    <div class="content-movie-detail">&nbsp; @film.Language</div>
+                </div>
+                <div class="movie-rated movie-info">
+                    <label>Rated:</label>
+                    <div class="content-movie-detail">&nbsp; @rated </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="movie-desciption">
+            <h2>Tóm tắt</h2>
+            <div class="content-movie-description">
+                @film.Description
+            </div>
+        </div>
+    </div>

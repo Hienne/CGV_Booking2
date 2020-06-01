@@ -1,0 +1,61 @@
+﻿@model CGVBooking.Models.SignupModel
+@{ 
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="signup-container">
+        <h1>Đăng ký</h1>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { placeholder = "Nhập tên tài khoản", @class = "input-signup" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber)
+            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { placeholder = "Nhập số điện thoại", @class = "input-signup" } })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email)
+            @Html.EditorFor(model => model.Email, new { @class = "input-signup", htmlAttributes = new { placeholder = "Nhập email", @class = "input-signup" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password)
+            @Html.EditorFor(model => model.Password, new { @class = "input-signup", htmlAttributes = new { placeholder = "Nhập mật khẩu", @class = "input-signup" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword)
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { placeholder = "Nhập lại mật khẩu", @class = "input-signup" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group birth-of-date">
+            @Html.LabelFor(model => model.BirthOfDate)
+            @Html.EditorFor(model => model.BirthOfDate, "{0:dd/MM/yyyy}", new { @class = "input-signup", htmlAttributes = new { placeholder = "Nhập ngày sinh" } })
+            @Html.ValidationMessageFor(model => model.BirthOfDate, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sex)
+            @Html.RadioButtonFor(model => model.Sex, "nam") @Html.Label("Nam")
+            @Html.RadioButtonFor(model => model.Sex, "nữ") @Html.Label("Nữ")
+            @Html.RadioButtonFor(model => model.Sex, "khác") @Html.Label("Giới tính khác")
+            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+        </div>
+
+        
+        <button type="submit" class="signupbtn">Đăng ký</button>
+
+    </div>
+        }
+

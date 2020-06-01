@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film</title>
+    <link rel="stylesheet" href="style.css">
+
+    @Styles.Render("~/Content/stylE.css")
+    @Styles.Render("~/Content/ShowTimE.css")
+    @Styles.Render("~/Content/movie_detail.css")
+    @Styles.Render("~/Content/bookING.css")
+    @Styles.Render("~/Content/SinguP.css")
+    @Styles.Render("~/Content/Login.css")
+    @Styles.Render("~/Content/tintuc.css")
+    @Scripts.Render("~/Scripts/script.js")
+    <link href="~/Content/BOOTstraP.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="header-top">
+        @RenderPage("HeaderTop.cshtml")
+    </div>
+    <header>
+        @RenderPage("Header.cshtml")
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer-cgv-container">
+        @RenderPage("Footer.cshtml")
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

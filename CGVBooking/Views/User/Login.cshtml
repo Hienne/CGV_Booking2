@@ -1,0 +1,78 @@
+﻿@model CGVBooking.Models.LoginModel
+@using CGVBooking.Common;
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    var user = (UserLogin)Session[CommonConstants.USER_SESSION];
+}
+
+<div id="login-wrap">
+    <div class="login-inner">
+        <div class="title-login">
+            <h2>Đăng nhập</h2>
+        </div>
+        <div class="main-loggin">
+            <div class="left-login">
+                <p>
+                    Vui lòng đăng nhập để nhận nhiều ưu đại dành
+                    riêng cho thành viên CGV.
+                </p>
+
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-login" }))
+                {
+                    <div class="login-box">
+                        @Html.ValidationSummary(true)
+                        <span>
+                            @Html.LabelFor(model => model.Account)
+                            @Html.EditorFor(model => model.Account, new { htmlAttributes = new { placeholder = "Nhập số điện thoại hoặc email", @class = "input-login" } })
+                            @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                        </span>
+                        <span>
+                            @Html.LabelFor(model => model.Password)
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input-login" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </span>
+                        <span id="remember">
+                            @Html.CheckBoxFor(model => model.RememberMe, new { @id = "remember-checkbox" })
+                            @Html.LabelFor(model => model.RememberMe, new { @id = "remember-label" })
+                        </span>
+                    </div>
+                    <div class="button-login">
+                        <button type="submit" onclick="userLogged()">Đăng nhập</button>
+                    </div>
+                }
+
+            </div>
+            <div class="right-login">
+                <a href="#"><img src="~/Content/img/66d9630f1e754516bee8de41867c9c00.jpg" alt=""></a>
+            </div>
+        </div>
+        <div class="login-bot">
+            <p>
+                Nếu bạn có 1 tài khoản thành viên, bạn có thể đăng nhập trực tuyến/app của tất
+                cả các Công ty áp dụng Thẻ thành viên CGV một cách thuận tiện.
+            </p>
+            @Html.ActionLink("ĐĂNG KÝ", "Signup", "User")
+
+        </div>
+    </div>
+</div>
+
+@{
+    if (TempData["SignupSuccess"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@MvcHtmlString.Create(TempData["SignupSuccess"].ToString())");
+            };
+        </script>
+    }
+}
+
+
+
+
+
+
+

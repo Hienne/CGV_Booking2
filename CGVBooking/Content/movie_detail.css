@@ -1,0 +1,67 @@
+.detail-movie-contain {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.movie-trailer {
+    margin-top: 10px;
+    text-align: center;
+    background-color: rgb(68, 65, 65);
+}
+
+.movie-trailer iframe {
+    margin: 20px 0;
+}
+
+.main-detail {
+    margin: 25px 0;
+    overflow: hidden;
+}
+
+.poster-detail {
+    float: left;
+    width: 24%;
+}
+
+.poster-detail img {
+    height: 295px;
+    width: 200px;
+}
+
+.content-detail {
+    font-size: 16px;
+    float: left;
+    width: 75%;
+    height: 300px;
+    line-height: 30px
+}
+
+.content-detail label {
+    font-weight: bold;
+}
+
+.movie-name {
+    border-bottom: 1px solid rgb(73, 72, 72);
+    text-transform: uppercase;
+}
+
+
+.movie-name h2 {
+    padding-bottom: 20px;
+}
+
+.movie-info label {
+    float: left;
+}
+
+.movie-rated .content-movie-detail {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.content-movie-description {
+    padding-top: 10px;
+    font-size: 16px;
+    line-height: 22px;
+}
+

@@ -1,0 +1,58 @@
+﻿
+<div class="header-container">
+    <div class="logo">
+        <a href="@Url.Action("Index", "Home")"><img src="~/Content/img/cgvlogo.png" alt="logo cgv"></a>
+    </div>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li class="my-dropdown">
+                <a href="#" class="dropbtn">Phim</a>
+                <div class="dropdown-content">
+                    @Html.ActionLink("Phim Đang Chiếu", "ReleasedFilm", "Film")
+                    @Html.ActionLink("Phim Sắp Chiếu", "UpcomingFilm", "Film")
+                </div>
+            </li>
+            <li class="my-dropdown">
+                <a href="#" class="dropbtn">Rạp CGV</a>
+                <div class="dropdown-content">
+                    <a href="#">Tất Cả Các Rạp</a>
+                    <a href="#">Rạp Đặc Biệt</a>
+                    <a href="#">Rạp Sắp Mở</a>
+                </div>
+            </li>
+            <li class="my-dropdown">
+                <a href="#" class="dropbtn">Thành Viên</a>
+                <div class="dropdown-content">
+                    <a href="#" style="color: white;">Tài Khoản CGV</a>
+                    <a href="#">Quyền Lợi</a>
+                </div>
+            </li>
+            <li class="my-dropdown">
+                <a href="#" class="dropbtn">Cultureplex</a>
+                <div class="dropdown-content">
+                    <a href="#">Quầy Online</a>
+                    <a href="#">Sự Kiện & Vé Nhóm</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- Search -->
+    <div id="header-serch">
+        <div class="header-search-left">
+            <a href="#" target="_blank" id="kenh-cine">
+                <img src="~/Content/img/kenhcine.gif" alt="kenh cine">
+            </a>
+            <form id="search-mini-form">
+                <input type="search" id="search-box" placeholder="Tim Kiem" autocomplete="off">
+                <button type="submit" title="Tìm kiếm" class="search-button">Tìm Kiếm</button>
+            </form>
+        </div>
+        <div class="header-search-right">
+            <a href="#">
+                <img src="~/Content/img/mua-ve_ngay.png" alt="mua ve ngay">
+            </a>
+        </div>
+    </div>
+</div>
+

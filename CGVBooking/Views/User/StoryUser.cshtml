@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CGVBooking.Models.UserStory>
+@{
+    ViewBag.Title = "StoryUser";
+    Layout = null;
+    var userStory = Model.ToList();
+}
+
+    <div class="story-container">
+        <div class="mini-cart-wrapper">
+            <ul>
+                @for (int i = 0; i < userStory.Count(); i++)
+                {
+                    string srcPoster = "~/Content/img/poster/" + userStory[i].FilmPoster;
+                    string suatchieu = userStory[i].TimeSlot + " , " + userStory[i].ShowTimeDate.ToShortDateString();
+                    string madatve = "ABC121" + userStory[i].TicketBookingID;
+                    <li class="item">
+                        <div class="film-booking-detail">
+                            <table class="info-wrapper">
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="5">
+                                            <img src="@Url.Content(srcPoster)" alt="" style="width: 200px; height: 250px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-label">Tên phim:</td>
+                                        <td class="my-label">@userStory[i].FilmName</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-label">Suất chiếu:</td>
+                                        <td class="my-label">@suatchieu</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-label">Ghế:</td>
+                                        <td class="my-label">@userStory[i].ChairName</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="my-label">Mã đặt vé:</td>
+                                        <td class="my-label">@madatve</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <a href="/User/InforUser">Quay lai</a>
+    </div>
+
+<style>
+    .story-container {
+        width: 980px;
+        margin: 10px auto;
+    }
+
+    .mini-cart-wrapper {
+        width: 100%;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .info-wrapper {
+        width: 45%;
+        color: #cccccc;
+        margin-left: 40px;
+    }
+
+    .my-label {
+        color: black;
+    }
+
+    .info-wrapper.my-label {
+        text-align: left;
+    }
+
+    .item{
+        list-style: none;
+    }
+
+    .info-wrapper td {
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+</style>

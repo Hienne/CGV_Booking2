@@ -1,0 +1,32 @@
+﻿@using CGVBooking.Common;
+@{
+
+    var user = (UserLogin)Session[CommonConstants.USER_SESSION];
+}
+
+<div class="header-top-container">
+    <div class="header-top-account">
+        @if (user == null)
+        {
+            @Html.ActionLink("ĐĂNG NHẬP/ ĐĂNG KÝ", "Login", "User"@*, new { area = "" }, new { @id = "userLogin" }*@)
+        }
+        else
+        {
+            @Html.ActionLink(user.UserName, "InforUser", "User")
+
+            @Html.ActionLink("ĐĂNG XUẤT", "Logout", "User")
+        }
+
+
+    </div>
+    <div class="header-career">
+        <a href="#">TUYỂN DỤNG</a>
+    </div>
+    <div class="header-career">
+        <a href="#">LIÊN HỆ CGV</a>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,45 @@
+.showtime-contain {
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(238, 231, 231);
+    margin-top: 30px;
+}
+
+.showtime-list {
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 980px;
+    margin: 0 auto;
+    padding-left: 15%;
+}
+
+.showtime-list-table th {
+    border: 1px solid black;
+}
+
+.showtime-list-table {
+    border-collapse: collapse;
+    width: 70%;
+    height: 70px;
+    line-height: 35px;
+}
+
+.showtime-list-table th {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.showtime-list-table th {
+    background-color: rgb(156, 148, 148);
+}
+
+.showtime-list-table tr:nth-child(even) {
+    background-color: #cec3c3;
+}
+
+.showtime-content {
+    text-align: left;
+    padding-left: 20px;
+    border: 1px solid black;
+}

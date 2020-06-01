@@ -1,0 +1,217 @@
+﻿@model CGVBooking.Models.BookingModel
+@using CGVBooking.Common;
+@{
+    ViewBag.Title = "chairStatus";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@{
+    var chairs = ViewBag.chair;
+    var film = ViewBag.film;
+    string srcPoster = "~/Content/img/poster/" + film.Poster;
+    var showtime = ViewBag.showtime as CGVBooking.Models.ShowTimes;
+    string suatchieu = ViewBag.timeslot + " , " + showtime.Date.ToShortDateString();
+    var userLogin = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var taikhoan = ViewBag.userLogged.Balance + ",000 vnđ";
+    var taikhoan2 = ViewBag.userLogged.Balance;
+}
+<main>
+    <div class="booking-page">
+        <div class="booking-title">
+            <h1>Booking online</h1>
+        </div>
+
+        <div class="screen-position"></div>
+
+
+        <div class="booking-chair">
+            @for (int i = 1; i < 108; i += 12)
+            {
+                <div class="chair-title">
+                    @for (int j = i - 1; j < i + 11; j++)
+                    {
+                        if (chairs[j].Type == "VIP")
+                        {
+                            if (chairs[j].Status == true)
+                            {
+                                <label class="checkboxContainer">
+                                    <span class="checkmark" style="background-color:#b11500">@chairs[j].Name</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="checkboxContainer">
+                                    <input type="radio" name="selectChair" class="selectChair" onclick="checkboxEvent(this, '@chairs[j].Name', '@chairs[j].Fare')">
+                                    <span class="checkmark" style="border: 1px solid #f71708;">@chairs[j].Name</span>
+                                </label>
+
+                            }
+
+                        }
+                        else
+                        {
+                            if (chairs[j].Status == true)
+                            {
+                                <label class="checkboxContainer">
+                                    <span class="checkmark" style="background-color:#b11500">@chairs[j].Name</span>
+                                </label>
+                            }
+                            else
+                            {
+                                <label class="checkboxContainer">
+                                    <input type="radio" name="selectChair" class="selectChair" onclick="checkboxEvent(this, '@chairs[j].Name', '@chairs[j].Fare')">
+                                    <span class="checkmark" style="border: 1px solid #01c73c;">@chairs[j].Name</span>
+                                </label>
+
+                            }
+                        }
+
+                    }
+                </div>
+
+            }
+
+
+
+            <div class="note-chair-status">
+                <ul>
+                    <li class="chair-status">
+                        <div style="background-color: #b11500;"></div>
+                        <p>Ghế đã chọn</p>
+                    </li>
+                    <li class="chair-status">
+                        <div style="background-color: #307701;"></div>
+                        <p>Ghế đang chọn</p>
+                    </li>
+
+                    <li class="chair-status">
+                        <div style="border: 1px solid #01c73c;"></div>
+                        <p>Ghế thường</p>
+                    </li>
+                    <li class="chair-status">
+                        <div style="border: 1px solid #f71708;"></div>
+                        <p>Ghế VIP</p>
+                    </li>
+                </ul>
+            </div>
+
+
+            @using (Html.BeginForm("chairStatus", "Booking", FormMethod.Post))
+            {
+                <div class="booking-bottom">
+                    <div class="format-booking-top"></div>
+                    <div class="mini-cart-wrapper">
+                        <ul>
+                            <li class="item">
+                                <div class="film-booking-detail">
+                                    <table class="info-wrapper first">
+                                        <tbody>
+                                            <tr>
+                                                <td rowspan="4">
+
+                                                    <img src=@Url.Content(srcPoster) style="width: 100px; height: 150px;">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">@film.Name</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">@film.Type</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">@film.Rated.Substring(0, 3)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="film-booking-detail">
+                                    <table class="info-wrapper">
+                                        <tbody>
+                                            <tr>
+                                                <td class="my-label">Rạp chiếu phim</td>
+                                                <td>CGV Vincom Nguyen Chi Thanh</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">Suất chiếu</td>
+                                                <td>@suatchieu</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">Phòng chiếu</td>
+                                                <td>@showtime.CinemaRoom</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">Ghế</td>
+                                                <td>
+                                                    @Html.TextBoxFor(model => model.ChairName, new
+                                            {
+                                                @style = "background-color: #000; color: #cec9c9; border: none;",
+                                                @readonly = "readonly"
+                                                    })
+                                            </td>
+                                            <td>@Html.TextBoxFor(model => model.showTimeID, new { Value = showtime.ShowTimesID, @style = "display: none;" })</td>
+
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="film-booking-detail">
+                                    <table class="info-wrapper">
+                                        <tbody>
+                                            <tr>
+                                                <td class="my-label">Giá vé</td>
+                                                <td id="giaGhe">0 vnđ</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">Tài Khoản</td>
+                                                <td>@taikhoan</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="my-label">Số dư</td>
+                                                <td id="soDu">0 vnđ</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="submit" class="btn-booking-next" id="payment">Payment</button>
+
+                    <div class="format-booking-bottom"></div>
+                </div>
+            }
+        </div>
+
+</main>
+
+<script type="text/javascript">
+    
+
+    function checkboxEvent(obj, name, fare) {
+        @*var taikhoan = @userLogin.UserBalance;*@
+        var taikhoan = @taikhoan2
+        var sodu = taikhoan - fare;
+        if (obj.checked) {
+            document.getElementById("ChairName").value = name;
+            document.getElementById("giaGhe").innerHTML = fare + ",000 vnđ";
+            if (sodu > 0) {
+                document.getElementById("soDu").innerHTML = sodu + ",000 vnđ";
+            }
+            else {
+                document.getElementById("payment").disabled = true;
+                alert("Tài khoản của bạn không đủ");
+            }
+        }
+
+
+    }
+
+
+</script>
+

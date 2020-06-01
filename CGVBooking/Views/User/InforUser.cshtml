@@ -1,0 +1,35 @@
+﻿@using CGVBooking.Common;
+
+@{
+    ViewBag.Title = "InforUser";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+    var user = (UserLogin)Session[CommonConstants.USER_SESSION];
+}
+<main class="infor-user-container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#infor-user">Thông tin tài khoản</a></li>
+        <li><a data-toggle="tab" href="#story-user">Lịch sử giao dịch</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="infor-user" class="tab-pane fade in active">@Html.Action("AccountInfor", "User", new { @userID = user.UserID })</div>
+        <div id="story-user" class="tab-pane fade in">@Html.Action("StoryUser", "User", new { @userID = user.UserID })</div>
+    </div>
+</main>
+
+<style>
+    .infor-user-container {
+        width: 980px;
+        margin: 10px auto;
+    }
+
+    ul.nav.nav-tabs li:not(.active) a {
+        background-color: #eeeeee;
+        color: grey;
+    }
+
+    ul.nav.nav-tabs li.active a {
+        border-top: 3px solid #16a765;
+    }
+</style>
+

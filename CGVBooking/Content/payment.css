@@ -1,0 +1,50 @@
+.paying-container {
+    width: 980px;
+    margin: 20px auto;
+
+}
+
+.checkout-payments {
+    background-color: #fff1ce;
+}
+
+.payments-title {
+    border: 2px solid #d4d3c9;
+    color: #231f20;
+    background-color: #dbdbd8;
+    padding-left: 15px;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 5px;
+}
+
+.item-checkout {
+    margin-bottom: 10px;
+    float: none;
+    padding-left: 15px;
+    
+}
+
+.pm-icon {
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin: 5px 5px -10px 5px;
+    display: inline-block;
+}
+
+#payment-rule {
+    margin: 15px 5px 0 0;
+}
+
+.btn-payment-next {
+    background-image: url('img/bg-cgv-button-process.png');
+    background-position: -134px -110px;
+    width: 106px;
+    height: 110px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    margin-top: 25px;
+}

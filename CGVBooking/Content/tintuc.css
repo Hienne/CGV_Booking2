@@ -1,0 +1,30 @@
+.tintuc-container {
+    width: 980px;
+    margin: 20px auto
+}
+
+.tintuc-title {
+    margin-bottom: 20px;
+    color: #e71a0f;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.tintuc-left {
+    float: left;
+    width: 37%;
+}
+
+.tintuc-left img {
+    width: 351px;
+    height: 497px;
+}
+
+.tintuc-right {
+    float: right;
+    font-size: 15px;
+    line-height: 20px;
+    width: 60%;
+}

@@ -1,0 +1,150 @@
+.booking-page {
+    width: 980px;
+    margin: auto;
+    border-left: 2px solid #d4d3c9;
+    border-right: 2px solid #d4d3c9;
+}
+
+.booking-title {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #231d1c;
+    width: 100%;
+}
+
+.booking-title h1 {
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 32px;
+
+}
+
+.screen-position {
+    width: 100%;
+    height: 80px;
+    background-image: url('img/bg-screen.png');
+    background-repeat: no-repeat;
+    background-position-x: top;
+    background-position-y: center;
+    text-indent: -9999;
+    background-size: 100% auto;
+    margin: 50px 0;
+}
+
+.chair-title {
+   margin-left: 22%;
+}
+
+
+.checkboxContainer input {
+    display: none;
+}
+
+.checkboxContainer {
+    display: inline-block;
+    padding-left: 20px;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    line-height: 25px;
+    margin-bottom: 25px;
+    width: 5.5%;
+}
+
+.checkboxContainer .checkmark {
+    display: inline-block;
+    width: 100%;
+    height: 25px;
+    background: #eee;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+
+.selectChair:checked + .checkmark {
+    background-color: #307701;
+} 
+
+.note-chair-status {
+    margin-left: 25%;
+}
+
+.note-chair-status > ul {
+    margin-top: 40px;
+}
+
+.chair-status {
+    margin-left: 20px;
+}
+
+.chair-status > div {
+    width: 32px;
+    height: 32px;
+    margin-left: 20px;
+    background-color: #cec9c9;
+}
+
+.booking-bottom {
+    width: 100%;
+    margin: 30px auto 20px auto;
+    background-color: #000;
+    box-sizing: border-box;
+}
+
+.format-booking-top {
+    background-image: url('img/bg-top-seatmap.png');
+    background-repeat: repeat-x;
+    background-position: left top;
+    height: 10px;
+    width: 100%;
+    
+}
+
+.format-booking-bottom {
+    background-image: url('img/bg-bottom-seatmap.png');
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    height: 10px;
+    width: 100%;
+    clear: left;
+}
+
+.mini-cart-wrapper {
+    width: 85%;
+    float: left;
+}
+
+.item {
+    width: 30%;
+}
+
+.info-wrapper {
+    width: 80%;
+    color: #cccccc;
+    margin-left: 40px;
+}
+
+.info-wrapper.my-label {
+    text-align: left;
+}
+
+.info-wrapper td {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.btn-booking-next {
+    background-image: url('img/bg-cgv-button-process.png');
+    background-position: -155px -110px;
+    width: 106px;
+    height: 110px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    margin-top: 25px;
+}
+
+
+
+
+

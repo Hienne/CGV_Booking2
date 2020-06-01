@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CGVBooking.Models.Chair>
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@{ var chairs = Model.ToList(); }
+    <main>
+        <div class="booking-page">
+            <div class="screen-position">
+                <p>Màn hình</p>
+            </div>
+
+            <div class="booking-chair">
+
+                @for (int i = 1; i < 108; i+=12)
+                {
+                    <div class="chair-title">
+                        @for (int j = i-1; j < i+11; j++)
+                        {
+                            <div class="column-chair-number" role="checkbox" aria-checked="false" onclick="selectChair(this)">@chairs[j].Name</div>
+                            
+                        }
+                    </div>
+                 }
+
+                    <div class="note-chair-status">
+                        <ul>
+                            <li class="chair-status">
+                                <div style="background-color: #980303;"></div>
+                                <p>Ghế đã chọn</p>
+                            </li>
+                            <li class="chair-status">
+                                <div style="background-color: #307701;"></div>
+                                <p>Ghế đang chọn</p>
+                            </li>
+                            <li class="chair-status">
+                                <div></div>
+                                <p>Ghế trống</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+    </main>
+

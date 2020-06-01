@@ -1,0 +1,96 @@
+﻿@model CGVBooking.Models.User
+
+@{
+    ViewBag.Title = "AccountInfor";
+    Layout = null;
+    var birthOfDate = Model.BirthOfDate.ToString("dd/MM/yyy");
+    var taikhoan = Model.Balance + ",000 vnđ";
+    var gioitinh = Model.Sex.ToUpper();
+}
+
+<br />
+<div class="account-infor-container">
+    <div class="imageUser">
+        <img src="@Url.Content(Model.UserImage)" height="120" width="120" style="border:2px solid #676565; border-radius:80px" />
+    </div>
+
+    <dl class="dl-horizontal accountInfor">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthOfDate)
+        </dt>
+
+        <dd>
+            @birthOfDate
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @gioitinh
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @taikhoan
+        </dd>
+    </dl>
+
+    <p>
+        @Html.ActionLink("Thay đổi", "Edit", new { id = Model.UserID })
+    </p>
+</div>
+
+
+<style>
+    .account-infor-container {
+        padding-left: 50px;
+    }
+
+    .accountInfor {
+        margin-top: 5px;
+    }
+
+    .accountInfor dd {
+        margin-left: 110px;
+        padding-top: 5px;
+    }
+
+    .accountInfor dt {
+        text-align: left;
+        width: 100px;
+        padding-top: 5px;
+    }
+</style>
+
+
+
+

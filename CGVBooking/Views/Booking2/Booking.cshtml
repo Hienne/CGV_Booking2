@@ -1,0 +1,22 @@
+﻿@model CGVBooking.Models.BookingModel
+
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking</h2>
+
+@using (Html.BeginForm("Booking", "Booking2", FormMethod.Post, new { @class = "form-login" }))
+{
+    
+        <span>
+            <h3>chon ghe</h3>
+            @Html.EditorFor(model => model.ChairID)
+        </span>
+        
+    <div class="button-login">
+        <button type="submit">Booking</button>
+    </div>
+}
+

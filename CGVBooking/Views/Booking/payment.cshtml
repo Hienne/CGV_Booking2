@@ -1,0 +1,170 @@
+﻿@model CGVBooking.Models.BookingModel
+
+@{
+    ViewBag.Title = "payment";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@{
+    var booking = TempData["bookingmodel"];
+
+    //var chairs = booking.chairs.ToList();
+    //var film = booking.film;
+    //var showtime = booking.showtime;
+    //string srcPoster = "~/Content/img/poster/" + film.Poster;
+    //string suatchieu = showtime.TimeSlot + " , " + showtime.ShowtimeDate.ToShortDateString();
+    //List<int> chairIdSelected = new List<int>();
+}
+
+<main class="paying-container">
+
+    <div class="payments">
+        <h2 class="payments-title">Hình thức thanh toán</h2>
+        @using (Html.BeginForm("payment", "Booking", FormMethod.Post))
+        { }
+
+        <div class="checkout-payments">
+            <ul>
+                <li class="item-checkout">
+                    <input type="radio" name="ic-method" id="ATM-card" value="ATM-card">
+                    <label for="ATM-card">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/atm_icon.png');"></span>
+                        <span class="pm-name">ATM card (Thẻ nội địa)</span>
+                    </label>
+                </li>
+                <li class="item-checkout">
+                    <input type="radio" name="ic-method" id="global-card" value="global-card">
+                    <label for="global-card">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/visa-mastercard-icon.png');"></span>
+                        <span class="pm-name">Thẻ quốc tế (Visa, Master, JCB)</span>
+                    </label>
+                </li>
+                <li class="item-checkout">
+
+                    <input type="radio" name="ic-method" id="momo" value="momo">
+                    <label for="momo">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/momo_icon.png');"></span>
+                        <span class="pm-name">Ví MoMo</span>
+                    </label>
+                </li>
+                <li class="item-checkout">
+                    <input type="radio" name="ic-method" id="zalopay" value="zalopay">
+                    <label for="zalopay">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/zalopay_icon.png');"></span>
+                        <span class="pm-name">ZaloPay</span>
+                    </label>
+                </li>
+                <li class="item-checkout">
+                    <input type="radio" name="ic-method" id="airpay" value="airpay">
+                    <label for="airpay">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/airpay_icon.png');"></span>
+                        <span class="pm-name">AirPay</span>
+                    </label>
+                </li>
+                <li class="item-checkout">
+                    <input type="radio" name="ic-method" id="viettelPay" value="viettelPay">
+                    <label for="viettelPay">
+                        <span class="pm-icon" style="background-image: url('https://www.cgv.vn/media/catalog/product/placeholder/default/viettel.jpeg');"></span>
+                        <span class="pm-name">ViettelPay</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+
+        <input type="checkbox" name="payment-rule" id="payment-rule">
+        <label for="payment-rule">Tôi đồng ý với điều khoản sử dụng và mua vé cho người có độ tuổi phù hợp</label>
+
+        <div class="booking-bottom">
+            <div class="format-booking-top"></div>
+            <div class="mini-cart-wrapper">
+                <ul>
+                    <li class="item">
+                        <div class="film-booking-detail">
+                            <table class="info-wrapper first">
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="4">
+                                            @*<img src=@Url.Content(srcPoster) style="width: 100px; height: 150px;">*@
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">@booking.ToString()</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">@*@film.Type*@</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">@*@film.Rated.Substring(0, 3)*@</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="film-booking-detail">
+                            <table class="info-wrapper">
+                                <tbody>
+                                    <tr>
+                                        <td class="label">Rạp chiếu phim</td>
+                                        <td>CGV Vincom Nguyen Chi Thanh</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">Suất chiếu</td>
+                                        <td>@*@suatchieu*@</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="film-booking-detail">
+                            <table class="info-wrapper">
+                                <tbody>
+                                    <tr>
+                                        <td class="label">Phim</td>
+                                        <td>85000 d</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">Combo</td>
+                                        <td>00</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="label">Tong</td>
+                                        <td>00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn-payment-next" style="background-position: -155px -110px;" onclick="checkPayment()">Payment</button>
+
+            <div class="format-booking-bottom"></div>
+        </div>
+
+    </div>
+
+
+</main>
+
+<script type="text/javascript">
+    function checkPayment() {
+        var checkbox = document.getElementById("payment-rule").checked;
+
+        if (checkbox === false) {
+            alert("Vui lòng đồng ý với điều khoản sử dụng");
+        }
+        else {
+            var radio = document.querySelector('input[type="radio"]:checked');
+
+            if (radio === null) {
+                alert("Vui lòng chọn phương thức thanh toán");
+            }
+        }
+    }
+</script>
+

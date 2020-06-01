@@ -1,0 +1,114 @@
+﻿@model IEnumerable<CGVBooking.Models.Film>
+@{
+    ViewBag.Title = "UpcomingFilm";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+
+    var upcomingFilms = Model.ToList();
+    
+}
+
+    <div class="phimsapchieu-container">
+        <div class="page-title">
+            <h1>Phim Sắp Chiếu</h1>
+            <hr>
+        </div>
+
+        @foreach (var f in upcomingFilms)
+        {
+            string time;
+            if(f.Time == 0)
+            {
+                time = "Chưa cập nhật";
+            }
+            else
+            {
+                time = f.Time.ToString();
+            }
+            string srcPoster = "~/Content/img/poster/" + f.Poster;
+            <div class="upcoming-movie-item">
+                <div class="slide-item">
+                    <img src="@Url.Content(srcPoster)">
+
+                    <div class="link-booking">
+                        @Html.ActionLink("Xem Chi Tiết", "Detail", "Film", new { id = f.FilmID }, new { @class = "movie-detail" })
+                    </div>
+
+                    <h4 style="text-transform: uppercase; margin-top: 10px; font-weight:bold">@f.Name</h4>
+
+                    <div class="upcoming-movie-detail">
+                        <span style="font-weight: bold;">Thể loại:</span>
+                        <span>@f.Type</span>
+                    </div>
+
+                    <div class="upcoming-movie-detail">
+                        <span style="font-weight: bold;">Thời lượng:</span>
+                        <span>@time</span>
+                    </div>
+
+                    <div class="upcoming-movie-detail">
+                        <span style="font-weight: bold;">Khởi chiếu:</span>
+                        <span>@f.PremiereDate.ToString("dd/MM/yyyy")</span>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+
+        
+    </div>
+
+<style>
+    .phimsapchieu-container {
+        width: 980px;
+        margin: 10px auto;
+    }
+
+    .upcoming-movie-item {
+        float: left;
+        margin-bottom: 40px;
+        margin-right: 5.5%;
+    }
+
+    .slide-item {
+        position: relative;
+    }
+
+        .slide-item img {
+            width: 185px;
+            height: 260px;
+            border: 3px solid #000000;
+        }
+
+        .slide-item a {
+            background-color: #ee1c25;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            height: 40px;
+            left: 25%;
+            width: 100px;
+            border-radius: 10%;
+        }
+
+    .upcoming-movie-detail {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .page-title {
+        margin: 20px 0 40px 0;
+    }
+
+        .page-title h1 {
+            padding-bottom: 10px;
+            color: #222;
+        }
+
+        .page-title hr {
+            width: 94.5%;
+            height: 3px;
+            background-color: #222;
+        }
+</style>
+

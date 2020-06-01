@@ -1,0 +1,133 @@
+﻿@model IEnumerable<CGVBooking.Models.Film>
+@using CGVBooking.Common;
+@{
+    ViewBag.Title = "Home Page";
+Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+@{
+    var u = Model;
+}
+<main class="home-container">
+    <div class="home-movie">
+        <div class="home-title">
+            <h2>movie selection</h2>
+        </div>
+        <div class="home-movie-main">
+            <div class="slide-movie-container">
+                @foreach (var f in u)
+                {
+                    string srcImg = "~/Content/img/poster/" + f.Poster;
+
+                    if (f.FilmID == 1)
+                    {
+                        <div class="slides" style="display:block">
+                            <div class="slide-item">
+                                <img src="@Url.Content(srcImg)">
+                                <div class="link-booking">
+                                    @Html.ActionLink("Mua Vé Ngay", "ShowTimesList", "Booking", new { id = f.FilmID }, new { @class = "booking-ticket", @onclick = "checkLogin()" })
+                                    @Html.ActionLink("Xem Chi Tiết", "Detail", "Film", new { id = f.FilmID }, new { @class = "movie-detail" })
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+                    else
+                    {
+                        <div class="slides">
+                            <div class="slide-item">
+                                <img src="@Url.Content(srcImg)">
+                                <div class="link-booking">
+                                    @Html.ActionLink("Mua Vé Ngay", "ShowTimesList", "Booking", new { id = f.FilmID }, new { @class = "booking-ticket", @onclick = "checkLogin()" })
+                                    @Html.ActionLink("Xem Chi Tiết", "Detail", "Film", new { id = f.FilmID }, new { @class = "movie-detail" })
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+                }
+                
+
+                <a class="prev" onclick="plusSlide(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlide(1)">&#10095;</a>
+            </div>
+            <div class="office">
+                <h2>Box Office</h2>
+                @Html.ActionLink("Mua vé", "ReleasedFilm", "Film")
+
+            </div>
+        </div>
+    </div>
+
+    <div class="home-event">
+        <div class="home-title">
+            <h2>event</h2>
+        </div>
+
+        <ul class="toggle-tabs">
+            <li class="before"><a href="#">Tin Mới & Ưu Đãi</a></li>
+            <p>|</p>
+            <li class="after"><a href="#">Thành Viên CGV</a></li>
+        </ul>
+
+        <div class="list-event">
+            <ul>
+                <li>
+                    <a href="/News/News1">
+                        <img src="~/Content/img/eventss/240x201-daitiecchaohe.jpg" alt="dai_tiec_chao_he">
+                    </a>
+                </li>
+                <li>
+                    <a href="/News/News3">
+                        <img src="~/Content/img/eventss/coca_refill_240x201_1.jpg" alt="coca_refill">
+                    </a>
+                </li>
+                <li>
+                    <a href="/News/News4">
+                        <img src="~/Content/img/eventss/gom-tho-qua-xin-240x201_1.jpg" alt="gom-tho-qua-xin">
+                    </a>
+                </li>
+                <li>
+                    <a href="/News/News2">
+                        <img src="~/Content/img/eventss/uu-dai-visa-cgv-24x201.jpg" alt="uu-dai-visa-cgv">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="home-promotion-card">
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="https://www.cgv.vn/media/wysiwyg/packages/214x245.jpg" alt="dream-party">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://www.cgv.vn/media/wysiwyg/2019/DEC2019/U22_496x247.jpg" alt="u22-card">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="https://www.cgv.vn/media/wysiwyg/2019/DEC2019/LATE-SHOW-NEW-12.2019-214x245.jpg" alt="xem phim xuyen dem">
+                </a>
+            </li>
+        </ul>
+    </div>
+</main>
+
+
+@{
+
+    if (Session[CommonConstants.USER_SESSION] == null)
+    {
+        <script type="text/javascript">
+            function checkLogin() {
+                alert("Vui lòng đăng nhập trước khi mua vé");
+            }
+        </script>
+    }
+}
+

@@ -1,0 +1,49 @@
+.signup-container {
+    width: 980px;
+    margin: auto;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    position: relative;
+}
+
+.signup-container h1 {
+    margin-bottom: 25px;
+}
+
+.input-signup {
+    width: 100%;
+    padding: 15px;
+    /*margin: 5px 0 22px 0;*/
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+.input-signup:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+.birth-of-date{
+    margin-bottom: 20px;
+}
+/* Set a style for all buttons */
+.signupbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px auto;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    width: 50%;
+    display: table;
+}
+  
+  .signupbtn:hover {
+    opacity:1;
+  }
+  
